@@ -2,7 +2,7 @@
 
 import {useRef, useState} from "react";
 
-import video from '../assets/video_2024-03-23_11-52-30.mp4'
+//import video from '../assets/video_2024-03-23_11-52-30.mp4'
 import Footer from "./footer"
 import SideBar from "./sideBar";
 const Video = () => {
@@ -21,7 +21,7 @@ const Video = () => {
   return (
     <>
       <div className=" relative h-[600px] w-[350px] border-4  border-red-800 flex items-center justify-center">
-        <video src={video} loop ref={videoRef}
+        <video src="https://res.cloudinary.com/doin2x6n5/video/upload/v1711884081/short_videos/video_2024-03-23_11-52-30_cydazp.mp4" loop ref={videoRef}
  onClick={handleVideoPress}>
             
         </video>
