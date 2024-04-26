@@ -3,10 +3,10 @@ import { BiCommentDetail } from "react-icons/bi";
 import { LuShare2 } from "react-icons/lu";
 import { useState } from "react";
 
-const SideBar = () => {
-    const [like, setLike]=useState(0);
-    const [comment, setComment]= useState(0);
-    const [share, setShare]= useState(0);
+const SideBar = ({likes, comments, shares}) => {
+    const [like, setLike]=useState(parseInt(likes));
+    const [comment, setComment]= useState(parseInt(comments));
+    const [share, setShare]= useState(parseInt(shares));
     const handleLikeOnclick=()=>{
           setLike((like)=>like+1);
     }
