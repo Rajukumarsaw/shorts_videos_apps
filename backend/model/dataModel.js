@@ -19,9 +19,17 @@ const shortVideoSchema=new Schema({
    shares:{type:String,
     required:true
    },
-   comments:{type:String,
-    required:true
-  },
+   comments: [{
+    text: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    }
+  }
+],
 
 
 });

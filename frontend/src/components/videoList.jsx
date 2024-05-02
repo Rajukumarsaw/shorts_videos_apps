@@ -1,15 +1,15 @@
+
 import Video from "./video";
 import { useState,useEffect  } from "react";
 const VideoList = ({videoData}) => {
   const [videoDetail, setVideoDetail]=useState([]);
   useEffect(()=>{
-    setVideoDetail(videoData.data);
+    setVideoDetail(videoData.data); 
   }, [videoData]);
-  console.log(videoData, 'dat');
   return (
     <>
-      <div className=" bg-black">
-    <div className="flex flex-col items-center h-screen overflow-scroll snap-y snap-mandatory">
+      <div className=" bg-[#000000cd] overflow-hidden">
+    <div className="relative flex flex-col items-center h-screen overflow-scroll snap-y snap-mandatory top-8">
        {videoDetail && videoDetail.map((item)=>(<Video key={item._id} item={item}/>))}
     </div>
     </div>
@@ -18,3 +18,4 @@ const VideoList = ({videoData}) => {
 }
 
 export default VideoList
+

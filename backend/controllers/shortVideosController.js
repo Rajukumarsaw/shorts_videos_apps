@@ -9,4 +9,20 @@ const getAllshortVideos=async(req, res)=>{
    res.send(JSON.stringify(videos));
    
 };
-module.exports={postShortVideos, getAllshortVideos}; 
+const editStats=async(req,res)=>{
+    try {
+        await ShortVideos.findByIdAndUpdate(req.params.id, req.body);
+   
+       res.status(200).json({
+         success: true,
+         message: "Data updated successfully",
+       });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+          success: false,
+          message: "nhi hua",
+        });
+      }
+    }
+module.exports={editStats, postShortVideos, getAllshortVideos}; 

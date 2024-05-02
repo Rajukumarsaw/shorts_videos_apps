@@ -1,7 +1,6 @@
 
 
 import { useRef, useState, useEffect } from "react";
-import video from '../assets/video_2024-03-23_11-52-30.mp4';
 import Footer from "./footer";
 import SideBar from "./sideBar";
 
@@ -9,7 +8,7 @@ const Video = ({item}) => {
     const [playing, setPlaying] = useState(false);
     const videoRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
-
+    const video=item.url;
     useEffect(() => {
         const options = {
             root: null,
@@ -54,7 +53,7 @@ const Video = ({item}) => {
 
     return (
         <>
-            <div className="relative h-full w-[350px] flex items-center justify-center snap-start snap-always m-7">
+            <div className="relative h-full w-[350px] flex items-center justify-center snap-start snap-always m-7 ">
                 <video
                     src={video}
                     loop
@@ -64,7 +63,7 @@ const Video = ({item}) => {
                 <div className="absolute bottom-3 left-3">
                     <Footer userName={item.userName} description={item.description} song={item.song}/>
                 </div>
-                <SideBar likes={item.likes} comments={item.comments} shares={item.shares} />
+                <SideBar item={item} />
             </div>
         </>
     );
