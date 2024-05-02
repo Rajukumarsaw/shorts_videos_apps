@@ -4,7 +4,7 @@ import axios from "axios";
 import {useState, useEffect} from "react"
 import {Helmet} from "react-helmet"
 
-const backendUrl="http://localhost:8000"
+const backendUrl="https://shorts-videos-apps.onrender.com"
 function App() {
  const [data, setData]=useState([]);
  const fetchData=async()=>{
