@@ -13,7 +13,7 @@ const Video = ({item}) => {
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5 // Change this threshold according to your needs
+            threshold: 0.5
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -53,7 +53,7 @@ const Video = ({item}) => {
 
     return (
         <>
-            <div className="relative h-full w-[350px] flex items-center justify-center snap-start snap-always m-10 ">
+            <div className="relative h-[600px] w-[350px] flex items-center justify-center snap-start snap-always m-10 ">
                 <video
                     src={video}
                     loop
