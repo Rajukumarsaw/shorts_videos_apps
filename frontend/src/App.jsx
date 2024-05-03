@@ -2,9 +2,9 @@
 import VideoList from "./components/videoList"
 import axios from "axios";
 import {useState, useEffect} from "react"
-import {Helmet} from "react-helmet"
 
-const backendUrl="https://shorts-videos-apps.onrender.com"
+
+const backendUrl="https://shorts-videos-apps.onrender.co"
 function App() {
  const [data, setData]=useState([]);
  const fetchData=async()=>{
@@ -12,10 +12,6 @@ function App() {
    setData(resp);
  }
  useEffect(()=>{
-  <Helmet>
-        <title>New Page Title</title>
-        <meta name="description" content="New description for the page" />
-      </Helmet>
    fetchData();
  });
 

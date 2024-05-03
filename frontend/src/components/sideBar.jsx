@@ -3,8 +3,9 @@ import { BiCommentDetail } from "react-icons/bi";
 import { LuShare2 } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import { RiWhatsappFill } from "react-icons/ri";
-import { FaTwitter } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import { FaTwitter, FaFacebook } from "react-icons/fa";
+import { SiTelegram } from "react-icons/si"; 
+
 
 import axios from "axios";
 
@@ -16,7 +17,7 @@ const SideBar = ({ item }) => {
   const [displayCommentSection, setDisplayCommentSection] = useState(false);
   const [newComment, setNewComment] = useState({ text: "", username: "" });
   const [showShareMenu, setShowShareMenu] = useState(false);
-  const [liked, setLiked]=useState(false);
+  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
     const updateData = async () => {
@@ -40,7 +41,7 @@ const SideBar = ({ item }) => {
   const handleOnsubmit = (e) => {
     e.preventDefault();
     setComment([...comment, newComment]);
-    setNewComment({ text: "", username: item.userName }); // Clear input text
+    setNewComment({ text: "", username: item.userName }); 
   };
 
   const handleOnChange = (e) => {
@@ -52,12 +53,10 @@ const SideBar = ({ item }) => {
     setLiked(!liked);
     if (!liked) {
       setLike(like + 1);
-    }
-    else{
+    } else {
       setLike(like - 1);
     }
   };
-  
 
   const handleCommentOnclick = () => {
     setDisplayCommentSection(!displayCommentSection);
@@ -82,17 +81,22 @@ const SideBar = ({ item }) => {
     window.open(url, "_blank");
   };
 
+  const shareToTelegram = () => {
+    const url = `https://t.me/share/url?url=${window.location.href}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <>
       <div className="absolute right-5 bottom-15 flex flex-col text-amber-50 text-center">
-      <div className="my-2">
-  {liked ? (
-    <RiHeart3Fill size={30} onClick={handleLikeOnclick} className="text-red-500" />
-  ) : (
-    <RiHeart3Fill size={30} onClick={handleLikeOnclick} className="text-white" />
-  )}
-  <div>{like}</div>
-</div>
+        <div className="my-2">
+          {liked ? (
+            <RiHeart3Fill size={30} onClick={handleLikeOnclick} className="text-red-500" />
+          ) : (
+            <RiHeart3Fill size={30} onClick={handleLikeOnclick} className="text-white" />
+          )}
+          <div>{like}</div>
+        </div>
 
         <div className="my-2">
           <BiCommentDetail size={30} onClick={handleCommentOnclick} />
@@ -103,12 +107,13 @@ const SideBar = ({ item }) => {
         </div>
       </div>
       {showShareMenu && (
-  <div className="absolute top-10 right-10 bg-white border rounded shadow-lg p-4 ">
-    <button onClick={shareToWhatsApp}><RiWhatsappFill className=" text-green-500 h-10 w-10 mx-5"/></button>
-    <button onClick={shareToTwitter}><FaTwitter className=" text-blue-500 h-10 w-10 mx-5"/> </button>
-    <button onClick={shareToFacebook}><FaFacebook className=" text-blue-500 h-10 w-10 mx-5"/></button>
-  </div>
-)}
+        <div className="absolute top-10 right-5 bg-white border rounded shadow-lg p-4 ">
+          <button onClick={shareToWhatsApp}><RiWhatsappFill className=" text-green-500 h-10 w-10 mx-5"/></button>
+          <button onClick={shareToTwitter}><FaTwitter className=" text-blue-500 h-8 w-8 mx-4"/> </button>
+          <button onClick={shareToFacebook}><FaFacebook className=" text-blue-500 h-8 w-8 mx-4"/></button>
+          <button onClick={shareToTelegram}><SiTelegram className=" text-blue-500 h-8 w-8 mx-4"/></button> 
+        </div>
+      )}
 
       {displayCommentSection && (
         <div className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-white border rounded shadow-lg max-h-96 overflow-y-auto">
@@ -131,5 +136,6 @@ const SideBar = ({ item }) => {
 };
 
 export default SideBar;
+
 
 

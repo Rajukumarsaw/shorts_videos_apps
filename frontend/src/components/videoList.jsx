@@ -1,6 +1,6 @@
 import Video from "./video";
 import { useState, useEffect } from "react";
-
+import loadingImg from "../assets/image.png"
 const VideoList = ({ videoData }) => {
   const [videoDetail, setVideoDetail] = useState([]);
 
@@ -16,9 +16,11 @@ const VideoList = ({ videoData }) => {
         {videoDetail.length > 0 ? (
           videoDetail.map((item) => <Video key={item._id} item={item} />)
         ) : (
-          Array.from({ length: 1 }).map((_, index) => (
-            <div key={index} className="w-[350px] h-[600px] animate-pulse bg-[#a8b0b9c8] my-8"></div>
-          ))
+          
+            <div className="w-[350px] h-[600px]  bg-[#a8b0b9c8] my-8">
+              <img src={loadingImg} alt="loading video"  className="h-full w-full"/>
+            </div>
+          
         )}
       </div>
     </div>
