@@ -4,7 +4,7 @@ import axios from "axios";
 import {useState, useEffect} from "react"
 
 
-const backendUrl="https://shorts-videos-apps.onrender.co"
+const backendUrl="https://shorts-videos-apps.onrender.com"
 function App() {
  const [data, setData]=useState([]);
  const fetchData=async()=>{
