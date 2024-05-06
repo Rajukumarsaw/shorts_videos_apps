@@ -53,12 +53,13 @@ const Video = ({item}) => {
 
     return (
         <>
-            <div className="relative h-[600px] w-[350px] flex items-center justify-center snap-start snap-always m-10 ">
+            <div className="relative h-[580px] md:h-[600px] w-[350px] flex items-center justify-center snap-start snap-always m-8 ">
                 <video
                     src={video}
                     loop
                     ref={videoRef}
                     onClick={handleVideoPress}
+                    className="h-full"
                 />
                 <div className="absolute bottom-3 left-3">
                     <Footer userName={item.userName} description={item.description} song={item.song}/>

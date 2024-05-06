@@ -12,7 +12,7 @@ const VideoList = ({ videoData }) => {
 
   return (
     <div className="bg-[#000000cd] overflow-hidden">
-      <div className="relative flex flex-col items-center h-screen overflow-scroll snap-y snap-mandatory top-10">
+      <div className="relative flex flex-col items-center h-screen overflow-scroll snap-y snap-mandatory top-14">
         {videoDetail.length > 0 ? (
           videoDetail.map((item) => <Video key={item._id} item={item} />)
         ) : (

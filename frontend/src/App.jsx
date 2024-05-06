@@ -2,6 +2,7 @@
 import VideoList from "./components/videoList"
 import axios from "axios";
 import {useState, useEffect} from "react"
+import Header from "./components/mainHeader"
 
 
 const backendUrl="https://shorts-videos-apps.onrender.com"
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <>
+    <Header/>
     <VideoList videoData={data}/>
 
     </>
