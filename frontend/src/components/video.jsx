@@ -53,7 +53,7 @@ const Video = ({item}) => {
 
     return (
         <>
-            <div className="relative h-[580px] md:h-[600px] w-[350px] flex items-center justify-center snap-start snap-always m-8 ">
+            <div className="relative h-[600px] w-[350px] flex items-center justify-center snap-start snap-always m-8 ">
                 <video
                     src={video}
                     loop
