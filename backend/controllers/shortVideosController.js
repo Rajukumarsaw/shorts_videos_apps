@@ -1,4 +1,4 @@
-ShortVideos=require("../model/dataModel");
+const ShortVideos=require("../model/dataModel");
 
 const postShortVideos=async(req, res)=>{
     await ShortVideos.create(req.body);

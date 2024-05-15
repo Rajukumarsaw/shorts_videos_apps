@@ -5,7 +5,7 @@ const {urlencoded}=require('body-parser');
 
 const connectToDb=require("./db");
 const videoRoute=require('./routes/videosRoute');
-
+const userRoute=require("./routes/userRoute");
 
 const app=express();
 connectToDb();
@@ -17,5 +17,6 @@ app.use(express.json());
 app.use(urlencoded({ extended: true }));
 
 app.use('/shortVideos',videoRoute);
+app.use('/user',userRoute);
 
 module.exports=app;
