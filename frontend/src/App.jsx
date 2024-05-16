@@ -1,7 +1,7 @@
 
+import { ToastContainer } from "react-toastify"
 import Header from "./components/mainHeader"
 import {Outlet} from "react-router-dom"
-
 
 function App() {
  
@@ -9,6 +9,8 @@ function App() {
     <>
     <Header/>
     <Outlet/>
+    <ToastContainer
+      />
     
 
     </>

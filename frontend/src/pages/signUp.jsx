@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast} from 'react-toastify';
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+
 const SignUp = () => {
   const [formData, setFormData] = useState({
     userName: '',
@@ -13,13 +17,42 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Here you can add your form validation and submission logic
-    console.log(formData);
-  };
+       if(formData.userName && formData.confirmPassword && formData.password && formData.email){
+        
+         if(formData.password==formData.confirmPassword){
+
+          await axios.post(
+            import.meta.env.VITE_SERVER_URL +'/user/signup',
+                      formData  
+                   )
+                   .then((response)=>{ toast.success(response.data.message, {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    
+                    });})
+                   .catch ((error)=>{
+                  console.log("Error occurred:", error)}
+                   )
+                  }
+                  else{
+                    { toast.error("password and confirmPassword not equal", {
+                      position: "bottom-right",
+                      
+                      });}
+                  }
+                }
+                  else{
+                    { toast.error("Please enter required fields", {
+                      position: "bottom-right",
+                      
+                      });}
+                  }
+         };
 
   return (
+    <>
     <div className=' bg-slate-950  min-h-screen  flex justify-center m-2'>
     <div className='absolute mt-16 text-gray-300 bg-[#705eb977] rounded-lg w-[90%] md:w-[500px]'>
       <h1 className=' text-3xl mb-1 md:m-4 p-2 text-center'>Sign Up</h1>
@@ -88,6 +121,7 @@ const SignUp = () => {
         </div>
     </div>
     </div>
+    </>
   );
 };
 
