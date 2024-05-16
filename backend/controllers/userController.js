@@ -10,12 +10,12 @@ const userSignUp = async (req, res) => {
 
 		
 		if (user) {
-			res.send({ message: "Email id already register.", alert: false });
+			return res.send({ message: "Email id already register.", alert: false });
 		}
 		await User.create(req.body);
 		res.send({ message: "Successfully sign up", alert: true });
 	} catch (error) {
-		res.send({ message: error.message });
+		res.status(500).send({ message: error.message });
 	}
 };
 
