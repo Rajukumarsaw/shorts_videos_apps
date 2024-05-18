@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast} from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
-  console.log("your are in signup");
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     userName: '',
     email: '',
@@ -30,9 +30,9 @@ const SignUp = () => {
                    )
                    .then((response)=>{ toast.success(response.data.message, {
                     position: "bottom-right",
-                    autoClose: 2000,
-                    
-                    });})
+                    autoClose: 2000,});
+                      navigate("/login");
+                    })
                    .catch ((error)=>{
                   console.log("Error occurred:", error)}
                    )
