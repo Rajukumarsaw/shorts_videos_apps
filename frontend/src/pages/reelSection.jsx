@@ -4,7 +4,7 @@ const backendUrl="https://shorts-videos-apps.onrender.com"
 
 import VideoList from "../components/videoList";
 const ReelSection = () => {
-    
+  console.log("your are in reelSection");
 
  const [data, setData]=useState([]);
  const fetchData=async()=>{

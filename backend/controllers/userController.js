@@ -20,10 +20,9 @@ const userSignUp = async (req, res) => {
 };
 
 
-const userLogin = async (req, res) => {
+const userLogin = async (req, res) => { 
 	try {
 		const { email } = req.body;
-
 		const user = await User.findOne({ email });
 
 		if (user) {
@@ -34,13 +33,13 @@ const userLogin = async (req, res) => {
 			};
 
 			res.send({
-				message: "Login Successfull",
+				message: "Successfully Logged In",
 				alert: true,
 				data: userData,
 			});
 		} else {
 			res.send({
-				message: "Email is not available, please sign up first",
+				message: "Email is not available, please sign up first Raju",
 				alert: false,
 			});
 		}

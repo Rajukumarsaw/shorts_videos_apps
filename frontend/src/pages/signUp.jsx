@@ -5,6 +5,7 @@ import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
+  console.log("your are in signup");
   const [formData, setFormData] = useState({
     userName: '',
     email: '',

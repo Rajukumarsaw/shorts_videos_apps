@@ -1,7 +1,7 @@
 const express=require('express');
 const {userSignUp, userLogin}=require('../controllers/userController');
 const router=express.Router();
-router.get('/login', userLogin );
+router.post('/login', userLogin );
 //router.put('/post', updateUser);
 router.post('/signup',userSignUp
 );
