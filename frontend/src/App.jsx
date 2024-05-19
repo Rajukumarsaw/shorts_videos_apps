@@ -5,9 +5,12 @@ import { useState, useEffect } from "react";
 import LogIn from "./pages/logIn";
 import SignUp from "./pages/signUp";
 import ReelSection from "./pages/reelSection"; 
+import Upload from "./pages/upload";
+import Profile from "./pages/profile";
 
 function App() {
   const [userName, setUserName] = useState("");
+  
 
   useEffect(() => {
     const storedData = localStorage.getItem('userData');
@@ -24,6 +27,8 @@ function App() {
         <Route path="/login" element={<LogIn setUserName={setUserName} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<ReelSection />} />
+        <Route path="/upload" element={<Upload userName={userName} />} />
+        <Route path="/profile" element={<Profile  userName={userName} setUserName={setUserName} />} />
       </Routes>
       <ToastContainer />
     </>

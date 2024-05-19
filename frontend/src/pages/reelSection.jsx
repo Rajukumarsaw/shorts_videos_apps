@@ -13,7 +13,7 @@ const ReelSection = () => {
  }
  useEffect(()=>{
    fetchData();
- });
+ },[]);
   return (
     <>
       <VideoList videoData={data}/>

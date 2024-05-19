@@ -6,6 +6,14 @@ const {urlencoded}=require('body-parser');
 const connectToDb=require("./db");
 const videoRoute=require('./routes/videosRoute');
 const userRoute=require("./routes/userRoute");
+const cloudinary = require('cloudinary').v2;
+
+
+cloudinary.config({
+  cloud_name: 'doin2x6n5',
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 const app=express();
 connectToDb();

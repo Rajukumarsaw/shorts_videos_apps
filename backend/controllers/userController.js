@@ -5,12 +5,17 @@ const User=require('../model/userModel');
 const userSignUp = async (req, res) => {
 	try {
 		const { email } = req.body;
+		const {userName}=req.body;
 
-		const user = await User.findOne({ email });
+		const userEmail = await User.findOne({ email });
+		const user = await User.findOne({ userName });
 
 		
-		if (user) {
+		if (userEmail) {
 			return res.send({ message: "Email id already register.", alert: false });
+		}
+		 if(user){
+			return res.send({ message: "userName already exist, try other", alert: false });
 		}
 		await User.create(req.body);
 		res.send({ message: "Successfully sign up", alert: true });
