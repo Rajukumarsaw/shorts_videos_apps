@@ -34,7 +34,7 @@ const Profile = ({ userName, setUserName }) => {
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-gray-800 p-4 flex-shrink-0 justify-center mt-16">
         <div className="flex items-center mb-8 ">
-          <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-2xl font-bold">
+          <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-2xl font-bold">
             {userName.charAt(0).toUpperCase()}
           </div>
           <div className="ml-4">
