@@ -90,12 +90,8 @@ These instructions will get you a copy of the project up and running on your loc
 ## API Endpoints
 ### Here are some key API endpoints available in the application:
 #### Auth Routes
-- POST `/api/auth/register` - Register a new user
-- POST `/api/auth/login` - Login a user
-
-#### User Routes
-- GET `/api/users/:id` - Get user profile
-- PUT `/api/users/:id` - Update user profile
+- POST `/user/login` - Register a new user
+- POST `/user/signup` - Login a user
 
 #### Video Routes
 - GET `/shortVideos/getAllVideos` - Get all videos
