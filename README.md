@@ -80,6 +80,7 @@ These instructions will get you a copy of the project up and running on your loc
     ```sh
     cd frontend
     npm run dev
+ The application should now be running on [http://localhost:5173](http://localhost:5173).
 
 ## Usage
 - Register or log in to your account.
@@ -97,10 +98,11 @@ These instructions will get you a copy of the project up and running on your loc
 - PUT `/api/users/:id` - Update user profile
 
 #### Video Routes
-- GET `/api/videos` - Get all videos
-- POST `/api/videos` - Upload a new video
-- GET `/api/videos/:id` - Get a specific video
-- DELETE `/api/videos/:id` - Delete a video
+- GET `/shortVideos/getAllVideos` - Get all videos
+- POST `/shortVideos/upload` - Upload a new video
+- POST `/shortVideos/getUserVideos` - Get a specific user videos
+- PUT `/shortVideos/editStats/:id` - update likes and comment of the video
+  
 
 ## Contributing
 - Contributions are welcome! Please follow these steps:
@@ -112,5 +114,4 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Contact
 For any inquiries, please contact:
-- Your Name: your.email@example.com
-- GitHub: yourusername
+- Your Name: rajukumarsaw184@gmail.com
