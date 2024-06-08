@@ -9,8 +9,7 @@
 6. [Usage](#usage)
 7. [API Endpoints](#api-endpoints)
 8. [Contributing](#contributing)
-9. [License](#license)
-10. [Contact](#contact)
+9. [Contact](#contact)
 
 ## Introduction
 Reel Videos is a web application that allows users to create, share, and view short video clips, similar to popular social media platforms like TikTok and Instagram Reels. This project is built using the MERN stack (MongoDB, Express, React, Node.js).
@@ -23,7 +22,7 @@ Reel Videos is a web application that allows users to create, share, and view sh
 - Responsive design for mobile and desktop
 
 ## Technologies Used
-- **Frontend**: React, Redux, Tailwind CSS
+- **Frontend**: React, Tailwind CSS
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
 - **Cloud Storage**: Cloudinary (for storing video files)
@@ -84,14 +83,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Usage
 - Register or log in to your account.
-- Upload videos, view other users' videos, like, comment, and share.
+- Upload videos, view users' videos, like, comment, and share.
 - Customize your profile.
 
 ## API Endpoints
 ### Here are some key API endpoints available in the application:
 #### Auth Routes
-- POST `/user/login` - Register a new user
-- POST `/user/signup` - Login a user
+- POST `/user/login` - Login a new user
+- POST `/user/signup` - Register a user
 
 #### Video Routes
 - GET `/shortVideos/getAllVideos` - Get all videos
