@@ -1,4 +1,4 @@
-# Reel Videos Project
+# ALPSHOT
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -12,7 +12,7 @@
 9. [Contact](#contact)
 
 ## Introduction
-Reel Videos is a web application that allows users to create, share, and view short video clips, similar to popular social media platforms like TikTok and Instagram Reels. This project is built using the MERN stack (MongoDB, Express, React, Node.js).
+ALPSHOT is a web application that allows users to create, share, and view short video clips, similar to popular social media platforms like TikTok and Instagram Reels. This project is built using the MERN stack (MongoDB, Express, React, Node.js).
 
 ## Features
 - User authentication and authorization
