@@ -77,8 +77,8 @@ These instructions will get you a copy of the project up and running on your loc
 - open new terminal
  
     ```sh
-    cd frontend
-    npm run dev
+     cd frontend
+     npm run dev
  The application should now be running on [http://localhost:5173](http://localhost:5173).
 
 ## Usage
