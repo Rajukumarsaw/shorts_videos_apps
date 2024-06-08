@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useState, useEffect} from "react"
-const backendUrl="https://shorts-videos-apps.onrender.com"
+const backendUrl=import.meta.env.VITE_SERVER_URL
 
 import VideoList from "../components/videoList";
 const ReelSection = () => {
