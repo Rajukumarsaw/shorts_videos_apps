@@ -69,10 +69,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Running the Application
 ### Start the backend server:
-    ```sh
-    cd backend
-    npm run dev
 
+    
+      cd backend
+      npm run dev
+    
 ### Start the frontend server:
 - open new terminal
  
