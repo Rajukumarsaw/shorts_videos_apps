@@ -1,15 +1,13 @@
 import { RiHeart3Fill } from "react-icons/ri";
 import { BiCommentDetail } from "react-icons/bi";
 import { LuShare2 } from "react-icons/lu";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { RiWhatsappFill } from "react-icons/ri";
 import { FaTwitter, FaFacebook } from "react-icons/fa";
-import { SiTelegram } from "react-icons/si"; 
-
-
+import { SiTelegram } from "react-icons/si";
 import axios from "axios";
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-const SERVER_URL = "https://shorts-videos-apps.onrender.com";
 
 const SideBar = ({ item }) => {
   const [like, setLike] = useState(parseInt(item.likes));
@@ -18,6 +16,8 @@ const SideBar = ({ item }) => {
   const [newComment, setNewComment] = useState({ text: "", username: "" });
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [liked, setLiked] = useState(false);
+  const commentSectionRef = useRef(null);
+  const commentIconRef = useRef(null);
 
   useEffect(() => {
     const updateData = async () => {
@@ -38,10 +38,30 @@ const SideBar = ({ item }) => {
     updateData();
   }, [like, comment, item._id]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if ((commentSectionRef.current && !commentSectionRef.current.contains(event.target)) && ( commentIconRef.current &&
+      !commentIconRef.current.contains(event.target))) {
+        setDisplayCommentSection(false);
+      }
+    };
+
+    if (displayCommentSection) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [displayCommentSection]);
+
   const handleOnsubmit = (e) => {
     e.preventDefault();
     setComment([...comment, newComment]);
-    setNewComment({ text: "", username: item.userName }); 
+    setNewComment({ text: "", username: item.userName });
+    setDisplayCommentSection(false);
   };
 
   const handleOnChange = (e) => {
@@ -98,8 +118,8 @@ const SideBar = ({ item }) => {
           <div>{like}</div>
         </div>
 
-        <div className="my-2">
-          <BiCommentDetail size={30} onClick={handleCommentOnclick} />
+        <div  className="my-2" ref={commentIconRef}>
+          <BiCommentDetail size={30}   onClick={handleCommentOnclick} />
           <div>{comment.length}</div>
         </div>
         <div className="my-2">
@@ -116,14 +136,14 @@ const SideBar = ({ item }) => {
       )}
 
       {displayCommentSection && (
-        <div className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-white border rounded shadow-lg max-h-96 overflow-y-auto">
+        <div ref={commentSectionRef} className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-white border rounded shadow-lg max-h-96 overflow-y-auto">
           {comment.map((commentItem, index) => (
             <div key={index} className="mb-2">
               <span className="font-semibold">{commentItem.username}: </span>
               <span>{commentItem.text}</span>
             </div>
           ))}
-          <div className=" flex ">
+          <div className="flex">
             <div className="border-neutral-600 border-solid border-2 flex-grow">
               <input type="text" name="text" placeholder="add a comment" value={newComment.text} onChange={handleOnChange} className="w-full h-full" />
             </div>
@@ -136,6 +156,7 @@ const SideBar = ({ item }) => {
 };
 
 export default SideBar;
+
 
 
 
