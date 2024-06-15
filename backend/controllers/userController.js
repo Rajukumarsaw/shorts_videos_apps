@@ -44,7 +44,7 @@ const userLogin = async (req, res) => {
 			});
 		} else {
 			res.send({
-				message: "Email is not available, please sign up first Raju",
+				message: "Email is not available, please sign up first",
 				alert: false,
 			});
 		}
