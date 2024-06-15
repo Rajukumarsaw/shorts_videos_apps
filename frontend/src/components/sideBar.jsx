@@ -61,7 +61,6 @@ const SideBar = ({ item }) => {
     e.preventDefault();
     setComment([...comment, newComment]);
     setNewComment({ text: "", username: item.userName });
-    setDisplayCommentSection(false);
   };
 
   const handleOnChange = (e) => {
