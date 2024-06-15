@@ -146,7 +146,7 @@ const SideBar = ({ item }) => {
             <div className="border-neutral-600 border-solid border-2 flex-grow">
               <input type="text" name="text" placeholder="add a comment" value={newComment.text} onChange={handleOnChange} className="w-full h-full" />
             </div>
-            <button className="ml-2 rounded-md p-2 bg-[#22857b66]" onClick={handleOnsubmit}>Add</button>
+            <button className="ml-2 rounded-md p-2 bg-[#22857b66]" onClick={handleOnsubmit} disabled={!newComment.text.trim()}>Add</button>
           </div>
         </div>
       )}
