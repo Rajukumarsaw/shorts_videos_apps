@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LogIn setUserName={setUserName} />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<ReelSection />} />
+        <Route path="/" element={<ReelSection userName={userName}/>} />
         <Route path="/upload" element={<Upload userName={userName} />} />
         <Route path="/profile" element={<Profile  userName={userName} setUserName={setUserName} />} />
       </Routes>

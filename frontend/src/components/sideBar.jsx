@@ -9,7 +9,7 @@ import axios from "axios";
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 
-const SideBar = ({ item }) => {
+const SideBar = ({ item, userName }) => {
   const [like, setLike] = useState(parseInt(item.likes));
   const [comment, setComment] = useState(item.comments || []);
   const [displayCommentSection, setDisplayCommentSection] = useState(false);
@@ -72,6 +72,12 @@ const SideBar = ({ item }) => {
     setLiked(!liked);
     if (!liked) {
       setLike(like + 1);
+      axios.post(SERVER_URL+"/interaction/postInteractionData", {
+        userName,
+        videoId: item._id,
+        interactionType:"like"
+
+      });
     } else {
       setLike(like - 1);
     }

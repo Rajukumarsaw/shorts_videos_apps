@@ -3,7 +3,7 @@ import {useState, useEffect} from "react"
 const backendUrl=import.meta.env.VITE_SERVER_URL
 
 import VideoList from "../components/videoList";
-const ReelSection = () => {
+const ReelSection = ({userName}) => {
   console.log("your are in reelSection");
 
  const [data, setData]=useState([]);
@@ -16,7 +16,7 @@ const ReelSection = () => {
  },[]);
   return (
     <>
-      <VideoList videoData={data}/>
+      <VideoList videoData={data} userName={userName}/>
     </>
   )
 }

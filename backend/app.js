@@ -6,6 +6,7 @@ const {urlencoded}=require('body-parser');
 const connectToDb=require("./db");
 const videoRoute=require('./routes/videosRoute');
 const userRoute=require("./routes/userRoute");
+const interactionRoute=require("./routes/interactionRoute");
 const cloudinary = require('cloudinary').v2;
 
 
@@ -26,5 +27,6 @@ app.use(urlencoded({ extended: true }));
 
 app.use('/shortVideos',videoRoute);
 app.use('/user',userRoute);
+app.use('/interaction',interactionRoute);
 
 module.exports=app;
