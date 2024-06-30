@@ -64,8 +64,8 @@ def recommend():
         user_prediction = model.inverse_transform(model.transform(user_vector))
         user_recommendations = pd.Series(user_prediction.flatten(), index=all_video_ids)
 
-        # Return the top 5 recommendations
-        top_recommendations = user_recommendations.sort_values(ascending=False).head(5).index.tolist()
+        # Return up to 25 recommendations
+        top_recommendations = user_recommendations.sort_values(ascending=False).head(25).index.tolist()
         return jsonify({'recommendations': top_recommendations})
 
     except Exception as e:
