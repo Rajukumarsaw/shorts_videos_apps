@@ -3,21 +3,23 @@ import pandas as pd
 from sklearn.decomposition import NMF
 import pickle
 from pymongo import MongoClient
+import schedule
+import time
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# Load environment variables
 load_dotenv()
 
-# MongoDB URI
-MONGO_URI = os.getenv('MONGO_URI')
+# MongoDB URI from environment variables
+MONGO_URI = os.getenv("MONGO_URI")
 
 # Connect to MongoDB
 client = MongoClient(MONGO_URI)
-db = client.get_database('short-videos-app')  # Replace 'short-videos-app' with your database name
+db = client.get_database('short-videos-app')
 
 # Function to fetch interaction data from MongoDB
 def fetch_interaction_data():
-    collection = db.get_collection('interactions')  # Replace 'interactions' with your collection name
+    collection = db.get_collection('interactions')
     interactions = list(collection.find())
     return pd.DataFrame(interactions)
 
@@ -55,7 +57,16 @@ def train_model():
         print(f"Error occurred: {str(e)}")
 
 if __name__ == "__main__":
+    # Schedule the job to run every 1hr
+    schedule.every(60).minutes.do(train_model)
+
+    # Initial run
     train_model()
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
 
 
 
