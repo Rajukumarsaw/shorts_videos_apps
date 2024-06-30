@@ -1,7 +1,8 @@
 const Interaction=require("../model/interactionModel");
 
-const getInteractionData=async()=>{
-    return await Interaction.find();
+const getInteractionData=async(req,res)=>{
+    const interactionData=await Interaction.find();
+    res.send(JSON.stringify(interactionData));
 }
 
 const postInteractionData=async(req, res)=>{
