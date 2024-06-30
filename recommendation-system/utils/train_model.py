@@ -3,15 +3,13 @@ import pandas as pd
 from sklearn.decomposition import NMF
 import pickle
 from pymongo import MongoClient
+from dotenv import load_dotenv
 
-# Define the path to save the model
-script_dir = os.path.dirname(os.path.abspath(__file__))
-model_dir = os.path.join(script_dir, '../flask_app/model')
-model_path = os.path.join(model_dir, 'nmf_model.pkl')
-os.makedirs(model_dir, exist_ok=True)
+# Load environment variables from .env file
+load_dotenv()
 
 # MongoDB URI
-MONGO_URI = "mongodb+srv://rk8271740:Rajukumar%406090@cluster0.dqcxvl0.mongodb.net/short-videos-app?authMechanism=DEFAULT"
+MONGO_URI = os.getenv('MONGO_URI')
 
 # Connect to MongoDB
 client = MongoClient(MONGO_URI)
@@ -23,7 +21,8 @@ def fetch_interaction_data():
     interactions = list(collection.find())
     return pd.DataFrame(interactions)
 
-if __name__ == "__main__":
+# Function to train and save the model
+def train_model():
     try:
         # Load interaction data from MongoDB
         data = fetch_interaction_data()
@@ -40,6 +39,12 @@ if __name__ == "__main__":
         W = model.fit_transform(interaction_matrix)
         H = model.components_
 
+        # Define the path to save the model
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        model_dir = os.path.join(script_dir, '../flask_app/model')
+        model_path = os.path.join(model_dir, 'nmf_model.pkl')
+        os.makedirs(model_dir, exist_ok=True)
+
         # Save the model
         with open(model_path, 'wb') as file:
             pickle.dump(model, file)
@@ -48,6 +53,10 @@ if __name__ == "__main__":
 
     except Exception as e:
         print(f"Error occurred: {str(e)}")
+
+if __name__ == "__main__":
+    train_model()
+
 
 
 
