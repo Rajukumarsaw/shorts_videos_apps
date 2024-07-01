@@ -1,4 +1,4 @@
-name: Retrain and Deploy
+name: Retrain Model
 
 on:
   schedule:
@@ -11,19 +11,21 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Updated to v4 to support Node.js 20
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4  # Updated to v4 to support Node.js 20
         with:
           python-version: 3.8
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r utils/requirements.txt
+          pip install -r recommendation-system/utils/requirements.txt
 
       - name: Run train_model.py
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}  # Using the secret
         run: |
           python recommendation-system/utils/train_model.py
 
@@ -35,7 +37,8 @@ jobs:
           git commit -m 'Retrained model'
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Provided by GitHub Actions
+
 
   
          
