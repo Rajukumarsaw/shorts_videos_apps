@@ -56,16 +56,7 @@ def train_model():
     except Exception as e:
         print(f"Error occurred: {str(e)}")
 
-if __name__ == "__main__":
-    # Schedule the job to run every 1hr
-    schedule.every(60).minutes.do(train_model)
 
-    # Initial run
-    train_model()
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
 
 
 
