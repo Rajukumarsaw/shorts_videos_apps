@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import loadingImg from "../assets/image.png"
 const VideoList = ({ videoData, userName }) => {
   const [videoDetail, setVideoDetail] = useState([]);
-
+  console.log(userName);
+  console.log(videoData);
   useEffect(() => {
-    if (videoData && videoData.data) {
-      setVideoDetail(videoData.data);
+    if (videoData) {
+      setVideoDetail(videoData);
     }
   }, [videoData]);
 
