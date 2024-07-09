@@ -10,4 +10,5 @@ pymongo
 python-dateutil
 python-dotenv
 Werkzeug
-flask-cors  
+flask-cors
+scikit-learn  
