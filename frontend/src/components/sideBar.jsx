@@ -152,7 +152,7 @@ const SideBar = ({ item, userName }) => {
             (userName==='')?(
               <div className="flex">
               <div className=" rounded p-2 bg-slate-500">Login to comment</div>
-              <button className="ml-2 rounded-md p-2 bg-[#85242266]" onClick={handleOnsubmit} disabled={!newComment.text.trim()}>Add</button>
+              <button className="ml-2 rounded-md p-2 bg-[#22857b66]" onClick={handleOnsubmit} disabled={!newComment.text.trim()}>Add</button>
               </div>
             ):
           (
