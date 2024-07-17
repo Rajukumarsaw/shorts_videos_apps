@@ -141,7 +141,7 @@ const SideBar = ({ item, userName }) => {
       )}
 
       {displayCommentSection && (
-        <div ref={commentSectionRef} className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-[#26247979] text-gray-300 border rounded shadow-lg max-h-96 overflow-y-auto">
+        <div ref={commentSectionRef} className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-[#060f0f] text-gray-300 border rounded shadow-lg max-h-96 overflow-y-auto">
           {comment.map((commentItem, index) => (
             <div key={index} className="mb-2">
               <span className="font-bold">{commentItem.username}: </span>
