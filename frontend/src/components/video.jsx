@@ -82,7 +82,7 @@ const Video = ({item, userName}) => {
                     ref={videoRef}
                     onClick={handleVideoPress}
                     onTimeUpdate={handleVideoProgress}
-                    className="h-full"
+                    className="h-full rounded-xl"
                 />
                 <div className="absolute bottom-3 left-3">
                     <Footer userName={item.userName} description={item.description} song={item.song}/>
