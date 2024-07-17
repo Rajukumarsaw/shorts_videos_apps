@@ -141,7 +141,7 @@ const SideBar = ({ item, userName }) => {
       )}
 
       {displayCommentSection && (
-        <div ref={commentSectionRef} className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-[#060f0f] text-gray-300 border rounded shadow-lg max-h-96 overflow-y-auto">
+        <div ref={commentSectionRef} className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-[#05060a] text-gray-300 border rounded shadow-lg max-h-96 overflow-y-auto">
           {comment.map((commentItem, index) => (
             <div key={index} className="mb-2">
               <span className="font-bold">{commentItem.username}: </span>
@@ -152,7 +152,7 @@ const SideBar = ({ item, userName }) => {
             (userName==='')?(
               <div className="flex">
               <div className=" rounded p-2 bg-slate-500">Login to comment</div>
-              <button className="ml-2 rounded-md p-2 bg-[#22857b66]" onClick={handleOnsubmit} disabled={!newComment.text.trim()}>Add</button>
+              <button className="ml-2 rounded-md p-2 bg-[#85242266]" onClick={handleOnsubmit} disabled={!newComment.text.trim()}>Add</button>
               </div>
             ):
           (
