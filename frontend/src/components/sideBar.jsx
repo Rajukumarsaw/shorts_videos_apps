@@ -113,7 +113,7 @@ const SideBar = ({ item, userName }) => {
 
   return (
     <>
-      <div className="absolute right-5 bottom-15 flex flex-col text-amber-50 text-center">
+      <div className="absolute right-5 bottom-15 flex flex-col text-amber-50 text-center" >
         <div className="my-2">
           {liked ? (
             <RiHeart3Fill size={30} onClick={handleLikeOnclick} className="text-red-500" />
@@ -141,19 +141,29 @@ const SideBar = ({ item, userName }) => {
       )}
 
       {displayCommentSection && (
-        <div ref={commentSectionRef} className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-white border rounded shadow-lg max-h-96 overflow-y-auto">
+        <div ref={commentSectionRef} className="absolute right-8 md:-right-80 bottom-15 mt-40 p-4 bg-[#26247979] text-gray-300 border rounded shadow-lg max-h-96 overflow-y-auto">
           {comment.map((commentItem, index) => (
             <div key={index} className="mb-2">
-              <span className="font-semibold">{commentItem.username}: </span>
+              <span className="font-bold">{commentItem.username}: </span>
               <span>{commentItem.text}</span>
             </div>
           ))}
-          <div className="flex">
+          {
+            (userName==='')?(
+              <div className="flex">
+              <div className=" rounded p-2 bg-slate-500">Login to comment</div>
+              <button className="ml-2 rounded-md p-2 bg-[#22857b66]" onClick={handleOnsubmit} disabled={!newComment.text.trim()}>Add</button>
+              </div>
+            ):
+          (
+          <div className="flex ">
             <div className="border-neutral-600 border-solid border-2 flex-grow">
-              <input type="text" name="text" placeholder="add a comment" value={newComment.text} onChange={handleOnChange} className="w-full h-full" />
+              <input type="text" name="text" placeholder="add a comment" value={newComment.text} onChange={handleOnChange} className="w-full h-full text-[#000002f7] px-1" />
             </div>
             <button className="ml-2 rounded-md p-2 bg-[#22857b66]" onClick={handleOnsubmit} disabled={!newComment.text.trim()}>Add</button>
           </div>
+          )
+         }
         </div>
       )}
     </>

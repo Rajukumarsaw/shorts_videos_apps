@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Upload = ({userName}) => {
-  console.log("user", userName);
+  
   const [formData, setFormData] = useState({ video: null, description: "", song: "", userName:userName });
   const [send, setSend]=useState(true);
   const handleChange = (e) => {
@@ -27,10 +27,7 @@ const Upload = ({userName}) => {
     uploadData.append('description', formData.description);
     uploadData.append('song', formData.song);
     uploadData.append('userName', formData.userName);
-     console.log(formData.userName);
-     for (let pair of uploadData.entries()) {
-      console.log(pair[0]+ ', ' + pair[1]);
-    }
+     
         
     try {
         setSend((s)=>!s);
