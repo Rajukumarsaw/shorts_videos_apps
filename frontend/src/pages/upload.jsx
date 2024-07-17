@@ -2,9 +2,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const Upload = ({ userName }) => {
+const Upload = ({userName}) => {
   console.log("user", userName);
-  const [formData, setFormData] = useState({ video: null, description: "", song: "", userName: userName });
+  const [formData, setFormData] = useState({ video: null, description: "", song: "", userName:userName });
   const [send, setSend]=useState(true);
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -21,13 +21,17 @@ const Upload = ({ userName }) => {
       toast.error('Please select a video to upload');
       return;
     }
-
+      console.log("formD", formData);
     const uploadData = new FormData();
     uploadData.append('video', formData.video);
     uploadData.append('description', formData.description);
     uploadData.append('song', formData.song);
     uploadData.append('userName', formData.userName);
-
+     console.log(formData.userName);
+     for (let pair of uploadData.entries()) {
+      console.log(pair[0]+ ', ' + pair[1]);
+    }
+        
     try {
         setSend((s)=>!s);
       const response = await axios.post(import.meta.env.VITE_SERVER_URL + '/shortVideos/upload', uploadData, {
@@ -35,9 +39,13 @@ const Upload = ({ userName }) => {
           'Content-Type': 'multipart/form-data',
         },
       });
+       for (let pair of uploadData.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]);
+  }
       setSend((s)=>!s);
       toast.success('Video uploaded successfully');
     } catch (error) {
+      setSend((s)=>!s);
       toast.error('Failed to upload video');
     }
   };

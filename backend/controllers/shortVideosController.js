@@ -4,20 +4,30 @@ const cloudinary = require('cloudinary').v2;
 const postShortVideos = async (req, res) => {
   const { userName, description, song } = req.body;
   const file = req.file; // This is where multer stores the uploaded file
+
   console.log("body", req.body);
   console.log("file", file);
+
   if (!file) {
     return res.status(400).send({ message: 'No file uploaded' });
   }
 
   try {
-    // Upload video to Cloudinary using the buffer
-    const result = await cloudinary.uploader.upload_stream({ resource_type: 'video' }, (error, result) => {
-      if (error) {
-        throw error;
-      }
-      return result;
-    }).end(file.buffer);
+    // Ensure result is obtained correctly from Cloudinary upload
+    const result = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream({ resource_type: 'video' }, (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      });
+      stream.end(file.buffer);
+    });
+
+    // Log the result to verify it contains the secure_url
+    console.log("Cloudinary upload result:", result);
+
+    if (!result || !result.secure_url) {
+      throw new Error("Failed to upload video to Cloudinary");
+    }
 
     // Create a new video document with the Cloudinary URL
     const newVideo = new ShortVideos({
@@ -39,7 +49,6 @@ const postShortVideos = async (req, res) => {
     res.status(500).send({ message: 'Failed to upload video' });
   }
 };
-
 const getAllshortVideos = async (req, res) => {
   const videos = await ShortVideos.find({});
   res.send(JSON.stringify(videos));
