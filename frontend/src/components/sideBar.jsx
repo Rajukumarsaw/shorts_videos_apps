@@ -60,12 +60,12 @@ const SideBar = ({ item, userName }) => {
   const handleOnsubmit = (e) => {
     e.preventDefault();
     setComment([...comment, newComment]);
-    setNewComment({ text: "", username: item.userName });
+    setNewComment({ text: "", username: userName });
   };
 
   const handleOnChange = (e) => {
     const { value } = e.target;
-    setNewComment({ text: value, username: item.userName });
+    setNewComment({ text: value, username: userName });
   };
 
   const handleLikeOnclick = () => {
