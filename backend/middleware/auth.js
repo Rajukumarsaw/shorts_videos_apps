@@ -9,7 +9,6 @@ const auth=async(req, res, next)=>{
   }
 
   try {
-    console.log("decoded",token);
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id).select('-password'); // Exclude password from response
     if (!req.user) {

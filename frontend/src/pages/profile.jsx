@@ -9,7 +9,6 @@ const Profile = ({ userName, setUserName }) => {
   const fetchData = async () => {
     try {
           const Token = localStorage.getItem('token');
-          console.log("token",Token);
       const resp = await axios.post(import.meta.env.VITE_SERVER_URL + "/shortVideos/getUserVideos", { userName }, {
         headers: {
           Authorization: `Bearer ${Token}` 
