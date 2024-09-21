@@ -2,30 +2,28 @@ const mongoose = require('mongoose');
 const User = require('../model/userModel');
 const bcrypt = require('bcrypt');
 
+
 const userSignUp = async (req, res) => {
 	try {
 		const { email, userName, password } = req.body;
 
-		const userEmail = await User.findOne({ email });
-		const user = await User.findOne({ userName });
+		const existingUser = await User.findOne({ $or: [{ email }, { userName }] });
 
-		if (userEmail) {
-			return res.send({ message: "Email id already register.", alert: false });
+		if (existingUser) {
+			if (existingUser.email === email) {
+				return res.send({ message: "Email id already registered.", alert: false });
+			}
+			if (existingUser.userName === userName) {
+				return res.send({ message: "Username already exists, try another", alert: false });
+			}
 		}
-		if (user) {
-			return res.send({ message: "userName already exist, try other", alert: false });c
-		}
-
-		// Hash the password
-		const saltRounds = 10;
-		const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-		// Create user with hashed password
-		await User.create({ ...req.body, password: hashedPassword });
-		res.send({ message: "Successfully sign up", alert: true });
-	} catch (error) {
-		res.status(500).send({ message: error.message });
-	}
+		const user = new User({ username, email, password });
+    await user.save();
+    const token = user.generateAuthToken();
+    res.status(201).send({ user: { _id: user._id, username: user.username }, token });
+  } catch (error) {
+    res.status(400).send(error);
+  }
 };
 
 const userLogin = async (req, res) => { 
@@ -42,8 +40,9 @@ const userLogin = async (req, res) => {
 					_id: user._id,
 					userName: user.userName,
 					email: user.email,
+					token: user.generateJWT()
 				};
-
+                   console.log(userData.token);
 				res.send({
 					message: "Successfully Logged In",
 					alert: true,

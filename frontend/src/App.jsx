@@ -7,6 +7,7 @@ import SignUp from "./pages/signUp";
 import ReelSection from "./pages/reelSection"; 
 import Upload from "./pages/upload";
 import Profile from "./pages/profile";
+import UseCheckTokenExpiration from "./components/useCheckTokenExpiration";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -23,6 +24,7 @@ function App() {
   return (
     <>
       <Header userName={userName} setUserName={setUserName} />
+      <UseCheckTokenExpiration/>
       <Routes>
         <Route path="/login" element={<LogIn setUserName={setUserName} />} />
         <Route path="/signup" element={<SignUp />} />

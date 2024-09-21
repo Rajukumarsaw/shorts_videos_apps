@@ -8,8 +8,15 @@ const Profile = ({ userName, setUserName }) => {
 
   const fetchData = async () => {
     try {
-      const resp = await axios.post(import.meta.env.VITE_SERVER_URL + "/shortVideos/getUserVideos", { userName });
+          const Token = localStorage.getItem('token');
+          console.log("token",Token);
+      const resp = await axios.post(import.meta.env.VITE_SERVER_URL + "/shortVideos/getUserVideos", { userName }, {
+        headers: {
+          Authorization: `Bearer ${Token}` 
+        }
+      });
       setUserVideos(resp.data); 
+
     } catch (error) {
       console.error("Error fetching user videos:", error);
     }
@@ -25,6 +32,7 @@ const Profile = ({ userName, setUserName }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('userData');
+    localStorage.removeItem('token');
     setUserName(''); 
     navigate('/login');
   };

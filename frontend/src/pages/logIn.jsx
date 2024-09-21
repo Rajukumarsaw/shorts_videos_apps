@@ -26,18 +26,21 @@ const LogIn = ({ setUserName }) => {
         position: "bottom-right",
         autoClose: 2000,
       });
-
+  
       if (response.data.alert) {
+        const token = response.data.data.token;
+        const expirationTime = Date.now() +  24 * 60 * 60 * 1000; // 2 hours in milliseconds
         localStorage.setItem('userData', JSON.stringify(response.data.data));
-        setUserName(response.data.data.userName); // Update userName state
-        console.log("navigate");
+        localStorage.setItem('token', token);
+        localStorage.setItem('tokenExpiration', expirationTime); // Save expiration time
+        setUserName(response.data.data.userName);
         navigate("/");
-        console.log("navigated");
       }
     } catch (error) {
       console.log("Error occurred:", error);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
