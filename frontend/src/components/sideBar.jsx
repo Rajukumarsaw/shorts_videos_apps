@@ -11,7 +11,7 @@ const Sidebar = ({ userName, setUserName}) => {
         navigate('/login');
       };
   return (
-    <div className="fixed left-6 top-20 bottom-0 w-48 bg-gray-800 flex flex-col items-start justify-between py-4 px-2  rounded-lg border-white-100 border-[1px] hidden md:flex">
+    <div className="fixed left-6 top-20 bottom-0 w-48 bg-gray-800 flex flex-col items-start justify-between py-4 px-2  rounded-lg border-gray-600 border-[1px] hidden md:flex">
       <div className="flex flex-col items-start space-y-6 w-full">
         <button className="text-white hover:text-gray-300 flex items-center space-x-2 w-full" title="Home" onClick={() => navigate('/')}>
           <Home size={24} />

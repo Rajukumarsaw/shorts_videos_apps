@@ -21,7 +21,7 @@ const Header = ({ userName, setUserName }) => {
 
   return (
     <>
-    <div className="h-12 md:h-16 top-1 md:top-2 fixed left-1 right-1 md:left-6 md:right-6  flex items-cente shadow-lg border-white-100 border-[1px] bg-[#20273a] rounded-lg">
+    <div className="h-12 md:h-16 top-1 md:top-2 fixed left-1 right-1 md:left-6 md:right-6  flex items-cente shadow-lg border-gray-600 border-[1px] bg-gray-800 rounded-lg">
       <Link to="/" className="ml-10 md:mt-2 h-10 w-10">
         <img src={LOGO} alt="Logo" className="h-full w-full" />
       </Link>
