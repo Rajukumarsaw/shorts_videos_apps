@@ -18,8 +18,8 @@ const VideoList = ({ videoData, userName }) => {
           videoDetail.map((item) => <Video key={item._id} item={item} userName={userName} />)
         ) : (
           
-            <div className="w-[350px] h-[600px]  bg-[#a8b0b9c8] my-8 ">
-              <img src={loadingImg} alt="loading video"  className="h-full w-full"/>
+            <div className="w-[350px] h-[600px] my-8">
+              <img src={loadingImg} alt="loading video"  className="h-full w-full rounded-lg"/>
             </div>
           
         )}
