@@ -13,7 +13,7 @@ const VideoList = ({ videoData, userName }) => {
 
   return (
     <div className="bg-gray-900 overflow-hidden">
-      <div className="relative flex flex-col items-center h-screen  overflow-scroll snap-y snap-mandatory top-14">
+      <div className="relative flex flex-col items-center h-screen  overflow-scroll snap-y snap-mandatory top-14 md:top-20 md:left-28">
         {videoDetail.length > 0 ? (
           videoDetail.map((item) => <Video key={item._id} item={item} userName={userName} />)
         ) : (

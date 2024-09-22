@@ -20,11 +20,12 @@ const Header = ({ userName, setUserName }) => {
   // };
 
   return (
-    <div className="h-12 fixed left-8 top-2 right-12 flex items-center bg-white/0 backdrop:bg-transparent">
-      <Link to="/" className="ml-5 h-10 w-10">
+    <>
+    <div className="h-12 md:h-16 top-1 md:top-2 fixed left-1 right-1 md:left-6 md:right-6  flex items-cente shadow-lg border-white-100 border-[1px] bg-[#20273a] rounded-lg">
+      <Link to="/" className="ml-10 md:mt-2 h-10 w-10">
         <img src={LOGO} alt="Logo" className="h-full w-full" />
       </Link>
-      <div className="absolute flex right-2 items-center">
+      <div className="absolute flex right-2 items-center md:mt-2">
         {userName ? (
           <Link to="/upload" className="flex m-2 text-slate-50 items-center">
             <FaUpload className="mt-1" />
@@ -53,6 +54,7 @@ const Header = ({ userName, setUserName }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

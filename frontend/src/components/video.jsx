@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Footer from "./footer";
-import SideBar from "./sideBar";
+import VideoSideBar from "./VideoSideBar";
 import axios from "axios";
 import { FaPlayCircle } from 'react-icons/fa'; // Add this for pause icon
 
@@ -101,7 +101,7 @@ const Video = ({ item, userName }) => {
                 <div className="absolute bottom-3 left-3">
                     <Footer userName={item.userName} description={item.description} song={item.song} />
                 </div>
-                <SideBar item={item} userName={userName} />
+                <VideoSideBar item={item} userName={userName} />
             </div>
         </>
     );

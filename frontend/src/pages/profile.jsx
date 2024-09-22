@@ -29,43 +29,12 @@ const Profile = ({ userName, setUserName }) => {
 
   console.log("userVideos", userVideos);
 
-  const handleLogout = () => {
-    localStorage.removeItem('userData');
-    localStorage.removeItem('token');
-    setUserName(''); 
-    navigate('/login');
-  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col md:flex-row">
-      {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-gray-800 p-4 flex-shrink-0 justify-center mt-16">
-        <div className="flex items-center mb-8 ">
-          <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-2xl font-bold">
-            {userName.charAt(0).toUpperCase()}
-          </div>
-          <div className="ml-4">
-            <h2 className="text-lg font-bold">{userName}</h2>
-          </div>
-        </div>
-        <nav>
-          <ul>
-            <li className="mb-4">
-              <Link to="#" className="flex items-center p-2 rounded-lg bg-gray-700">
-                <span className="ml-2">Your Videos</span>
-              </Link>
-            </li>
-            <li>
-              <button onClick={handleLogout} className="flex items-center p-2 rounded-lg hover:bg-gray-700 w-full text-left">
-                <span className="ml-2">Logout</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-
+      
       {/* Main Content */}
-      <main className="flex-grow p-4 md:p-8 mt-16">
+      <main className=" relative flex-grow p-4 md:p-8 mt-16 md:left-56">
         <h1 className="text-2xl font-bold mb-4">Your Videos</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {userVideos.length === 0 ? (
