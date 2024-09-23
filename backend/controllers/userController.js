@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const User = require('../model/userModel');
 const bcrypt = require('bcrypt');
 
-
 const userSignUp = async (req, res) => {
 	try {
 		const { email, userName, password } = req.body;
 
+		// Check if email or username already exists
 		const existingUser = await User.findOne({ $or: [{ email }, { userName }] });
 
 		if (existingUser) {
@@ -17,13 +17,16 @@ const userSignUp = async (req, res) => {
 				return res.send({ message: "Username already exists, try another", alert: false });
 			}
 		}
-		const user = new User({ username, email, password });
-    await user.save();
-    const token = user.generateAuthToken();
-    res.status(201).send({ user: { _id: user._id, username: user.username }, token });
-  } catch (error) {
-    res.status(400).send(error);
-  }
+
+		// Create new user
+		const user = new User({ userName, email, password });
+		await user.save();
+
+		// Return success message
+		res.status(201).send({ message: "Successfully Signed Up", alert: true });
+	} catch (error) {
+		res.status(400).send(error);
+	}
 };
 
 const userLogin = async (req, res) => { 

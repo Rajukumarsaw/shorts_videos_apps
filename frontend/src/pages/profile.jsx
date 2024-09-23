@@ -31,10 +31,10 @@ const Profile = ({ userName, setUserName }) => {
 
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col md:flex-row">
+    <div className="min-h-screen bg-gray-900 text-white ">
       
       {/* Main Content */}
-      <main className=" relative flex-grow p-4 md:p-8 mt-16 md:left-56">
+      <main className="pt-20 pl-4 md:pl-60">
         <h1 className="text-2xl font-bold mb-4">Your Videos</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {userVideos.length === 0 ? (

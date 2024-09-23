@@ -18,7 +18,7 @@ const userSchema = new Schema({
 	
 });
 userSchema.pre('save', async function(next){
-	if(this.isModified('password')) return next();
+	if(!this.isModified('password')) return next();
 	this.password=await bcrypt.hash(this.password, 10);
 	next();
 });
@@ -29,6 +29,6 @@ userSchema.methods.generateJWT=function(){
 	return jwt.sign(
 		{id:this._id, userName:this.userName, email:this.email},
 		 process.env.JWT_SECRET,
-		{expiresIn:24 * 60 * 60 * 1000});
+		{expiresIn:'1d'});
 };
 module.exports=model("user", userSchema);
