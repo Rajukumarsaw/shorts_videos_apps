@@ -36,16 +36,16 @@ const Video = ({ item, userName }) => {
     }, []);
 
     useEffect(() => {
-        if (isVisible) {
+        if (isVisible && !playing) {
             videoRef.current.play();
             setPlaying(true);
             setShowPauseIcon(false); // Hide the pause icon when playing
-        } else {
+        } else if (!isVisible && playing) {
             videoRef.current.pause();
             setPlaying(false);
             setShowPauseIcon(true); // Show the pause icon when paused
         }
-    }, [isVisible]);
+    }, [isVisible, playing]);
 
     const handleVideoPress = () => {
         if (playing) {
@@ -85,6 +85,8 @@ const Video = ({ item, userName }) => {
                 <video
                     src={video}
                     loop
+                    muted // Ensure the video is muted for autoplay
+                    autoPlay // Video attempts to play automatically
                     ref={videoRef}
                     onClick={handleVideoPress}
                     onTimeUpdate={handleVideoProgress}
@@ -108,4 +110,5 @@ const Video = ({ item, userName }) => {
 };
 
 export default Video;
+
 
