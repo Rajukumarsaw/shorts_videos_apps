@@ -119,7 +119,7 @@ const Video = ({ item, userName }) => {
                     ref={videoRef}
                     onClick={handleVideoPress}
                     onTimeUpdate={handleVideoProgress}
-                    className=" rounded-xl h-[600px]"
+                    className=" rounded-xl h-[600px] bg-black"
                     playsInline
                 />
                 {showPlayIcon && (
