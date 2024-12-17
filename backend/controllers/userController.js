@@ -44,9 +44,10 @@ const userLogin = async (req, res) => {
 					userName: user.userName,
 					email: user.email,
 					token: user.generateJWT()
-				};
-                   console.log(userData.token);
-				res.send({
+				};			
+				return res
+				.status(200)
+				.json({
 					message: "Successfully Logged In",
 					alert: true,
 					data: userData,

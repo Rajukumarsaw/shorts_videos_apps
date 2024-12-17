@@ -19,7 +19,6 @@ const VideoSideBar = ({ item, userName }) => {
   const commentSectionRef = useRef(null);
   const commentIconRef = useRef(null);
 
-  useEffect(() => {
     const updateData = async () => {
       try {
         const payload = {
@@ -35,8 +34,6 @@ const VideoSideBar = ({ item, userName }) => {
       }
     };
 
-    updateData();
-  }, [like, comment, item._id]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -57,10 +54,11 @@ const VideoSideBar = ({ item, userName }) => {
     };
   }, [displayCommentSection]);
 
-  const handleOnsubmit = (e) => {
+  const handleOnsubmit = async(e) => {
     e.preventDefault();
     setComment([...comment, newComment]);
     setNewComment({ text: "", username: userName });
+    await updateData();
   };
 
   const handleOnChange = (e) => {
@@ -68,16 +66,17 @@ const VideoSideBar = ({ item, userName }) => {
     setNewComment({ text: value, username: userName });
   };
 
-  const handleLikeOnclick = () => {
+  const handleLikeOnclick = async() => {
     setLiked(!liked);
     if (!liked) {
       setLike(like + 1);
-      axios.post(SERVER_URL+"/interaction/postInteractionData", {
+      await axios.post(SERVER_URL+"/interaction/postInteractionData", {
         userName,
         videoId: item._id,
         interactionType:"like"
 
       });
+      await updateData();
     } else {
       setLike(like - 1);
     }

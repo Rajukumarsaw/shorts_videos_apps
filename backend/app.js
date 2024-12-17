@@ -3,6 +3,7 @@ require('dotenv').config();
 const cors=require('cors');
 const {urlencoded}=require('body-parser');
 
+
 const connectToDb=require("./db");
 const videoRoute=require('./routes/videosRoute');
 const userRoute=require("./routes/userRoute");
@@ -21,7 +22,11 @@ connectToDb();
 
 
 //middleware
-app.use(cors());
+app.use(cors(
+  {
+    credentials: true // Allow sending cookies
+  }
+));
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 

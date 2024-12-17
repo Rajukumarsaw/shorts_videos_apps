@@ -4,7 +4,9 @@ const Footer = ({userName, description, song}) => {
     <>
       <div className="  text-gray-200">
         <h3 className=" text-lg font-semibold">{userName}</h3>
-        <p>{description}</p>
+        {
+          (description.length>100)?(<p>{description.slice(0, 100)}...</p>):(<p>{description}</p>)
+        }
         <div className="flex  items-center ">
         <FcMusic/>
         <div className=" overflow-hidden">
